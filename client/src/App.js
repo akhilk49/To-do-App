@@ -7,7 +7,7 @@ const App = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/todos')
+    axios.get('https://to-do-app-fhpr.onrender.com/todos')
       .then((res) => setTodos(res.data))
       .catch((err) => console.error('Error fetching todos:', err));
   }, []);
@@ -19,19 +19,19 @@ const App = () => {
       completed: false,
     };
   
-    axios.post('http://localhost:3001/todos', newTodo)
+    axios.post('https://to-do-app-fhpr.onrender.com/todos', newTodo)
       .then((res) => setTodos([...todos, res.data]))
       .catch((err) => console.error('Error adding todo:', err));
   };  
 
   const deleteTodo = (id) => {
-    axios.delete(`http://localhost:3001/todos/${id}`)
+    axios.delete(`https://to-do-app-fhpr.onrender.com/todos/${id}`)
       .then(() => setTodos(todos.filter((todo) => todo.id !== id)))
       .catch((err) => console.error('Error deleting todo:', err));
   };
 
   const editTodo = (updatedTodo) => {
-    axios.put(`http://localhost:3001/todos/${updatedTodo.id}`, updatedTodo)
+    axios.put(`https://to-do-app-fhpr.onrender.com/todos/${updatedTodo.id}`, updatedTodo)
       .then((res) => {
         setTodos(todos.map((todo) =>
           todo.id === updatedTodo.id ? res.data : todo
