@@ -1,14 +1,4 @@
 {
   "todos": [
-    {
-      "id": "1730271514429",
-      "task": "Write a Journal",
-      "completed": false
-    },
-    {
-      "id": "1730272662356",
-      "task": "Add task",
-      "completed": false
-    }
   ]
 }
