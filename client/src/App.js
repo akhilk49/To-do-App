@@ -14,20 +14,26 @@ const App = () => {
 
   const addTodo = (task) => {
     const newTodo = {
-      id: String(Date.now()), 
+      id: String(Date.now()),
       task,
       completed: false,
     };
-  
+
     axios.post('https://to-do-app-fhpr.onrender.com/todos', newTodo)
       .then((res) => setTodos([...todos, res.data]))
       .catch((err) => console.error('Error adding todo:', err));
-  };  
+  };
 
   const deleteTodo = (id) => {
     axios.delete(`https://to-do-app-fhpr.onrender.com/todos/${id}`)
       .then(() => setTodos(todos.filter((todo) => todo.id !== id)))
       .catch((err) => console.error('Error deleting todo:', err));
+  };
+
+  const deleteAllTodos = () => {
+    axios.delete('https://to-do-app-fhpr.onrender.com/todos')
+      .then(() => setTodos([]))
+      .catch((err) => console.error('Error deleting all todos:', err));
   };
 
   const editTodo = (updatedTodo) => {
@@ -42,12 +48,18 @@ const App = () => {
         alert('Failed to edit the task. Please try again.');
       });
   };
-  
+
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-100 p-6">
       <h1 className="text-3xl font-bold mb-4">To-Do App</h1>
       <div className="bg-white rounded-lg shadow-md p-4 w-full max-w-lg">
         <AddTodo addTodo={addTodo} />
+        <button
+          onClick={deleteAllTodos}
+          className="bg-red-500 text-white rounded-lg px-4 py-2 mb-4 hover:bg-red-600 transition"
+        >
+          Delete All Tasks
+        </button>
         <TodoList todos={todos} onDelete={deleteTodo} onEdit={editTodo} />
       </div>
     </div>
