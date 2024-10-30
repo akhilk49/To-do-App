@@ -1,11 +1,6 @@
 {
   "todos": [
     {
-      "id": "2",
-      "task": "Build a To-Do App",
-      "completed": true
-    },
-    {
       "id": "1730271514429",
       "task": "Write a Journal",
       "completed": false
