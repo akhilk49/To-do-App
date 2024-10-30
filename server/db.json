@@ -1,0 +1,7 @@
+{
+    "todos": [
+      { "id": 1, "task": "Learn React", "completed": false },
+      { "id": 2, "task": "Build a To-Do App", "completed": true }
+    ]
+  }
+  
